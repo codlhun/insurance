@@ -118,11 +118,11 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         // Initialize EmailJS with your service ID
-        emailjs.init("service_i0s4ix2");
+        emailjs.init("user_youruserid"); // Change this to your actual User ID from EmailJS
 
         // Function to send email
         function sendEmail(formData) {
-            emailjs.send("service_i0s4ix2", "template_name", formData)
+            emailjs.send("default_service", "template_name", formData)
                 .then(function(response) {
                     console.log("Email sent successfully:", response);
                     alert("Your inquiry has been submitted successfully.");
