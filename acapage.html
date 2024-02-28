@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACA Marketplace Insurance Plans</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f3e0; /* Light green background color */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Add more styling as needed */
+        .visuals {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .visuals img {
+            width: 200px; /* Adjust image size as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin: 0 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .additional-benefits {
+            color: green; /* Green text color */
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>$0 per Month ACA Marketplace Insurance Plans + Extra Benefits</h1>
+        <p class="additional-benefits">Additional benefits include up to $1000 to help with gas, groceries, bills, and other health-related needs.</p>
+        <form id="insuranceForm">
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+            
+            <label for="zipcode">Zip Code:</label>
+            <input type="text" id="zipcode" name="zipcode" required>
+            
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+            
+            <label for="household">Number of Taxable Household Members:</label>
+            <input type="number" id="household" name="household" required>
+            
+            <label for="income">Estimated Income for 2024:</label>
+            <input type="number" id="income" name="income" required>
+            
+            <input type="submit" value="Submit">
+        </form>
+
+        <!-- Visuals -->
+        <div class="visuals">
+            <img src="https://media.istockphoto.com/id/1274274040/vector/tiny-client-patient-female-character-signing-huge-health-care-insurance-policy-paper.webp?b=1&amp;s=612x612&amp;w=0&amp;k=20&amp;c=RvH8nvAAF9hd39K_aHTtKWfkIPX4788uvYsUBy2_690=" alt="Insurance Image 1">
+            <img src="https://media.istockphoto.com/id/1445074118/vector/dental-care-protection.webp?b=1&amp;s=612x612&amp;w=0&amp;k=20&amp;c=X33_t28eaxjYl9nQBuTnK7QzCg5ooz2IuVpjebdW_J0=" alt="Insurance Image 2">
+            <img src="https://media.istockphoto.com/id/1161831150/vector/health-plans-medical-insurance-illustration.webp?b=1&amp;s=612x612&amp;w=0&amp;k=20&amp;c=wH7EwwPrXSVTL7BV3FXuWvrjcYCWYm--G9NsAc8fRmA=" alt="Insurance Image 3">
+        </div>
+    </div>
+
+    <!-- Include the EmailJS library -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        // Initialize EmailJS with your service ID
+        emailjs.init("service_i0s4ix2");
+
+        // Function to send email
+        function sendEmail(formData) {
+            emailjs.send("service_i0s4ix2", "template_name", formData)
+                .then(function(response) {
+                    console.log("Email sent successfully:", response);
+                    alert("Your inquiry has been submitted successfully.");
+                }, function(error) {
+                    console.log("Error sending email:", error);
+                    alert("Sorry, there was an error submitting your inquiry. Please try again later.");
+                });
+        }
+
+        // Function to handle form submission
+        document.getElementById("insuranceForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Collect form data
+            var formData = {
+                phone: document.getElementById("phone").value,
+                zipcode: document.getElementById("zipcode").value,
+                age: document.getElementById("age").value,
+                household: document.getElementById("household").value,
+                income: document.getElementById("income").value
+            };
+
+            // Send email with the form data
+            sendEmail(formData);
+        });
+    </script>
+</body>
+</html>
